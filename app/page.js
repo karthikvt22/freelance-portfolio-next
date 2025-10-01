@@ -14,7 +14,7 @@ import { useState, useEffect } from "react";
 // DYNAMICALLY IMPORT HEAVY BACKGROUND COMPONENTS
 const BlueDots = dynamic(() => import('../components/BlueDots'), { ssr: false, loading: () => null });
 const FloatingSpheres = dynamic(() => import('../components/FloatingSpheres'), { ssr: false, loading: () => null });
-const Globe = dynamic(() => import('../components/Globe'), { ssr: false, loading: () => null });
+// REMOVED: const Globe = dynamic(() => import('../components/Globe'), { ssr: false, loading: () => null });
 
 export default function Home() {
   const { scrollYProgress, scrollY } = useScroll();
@@ -48,7 +48,9 @@ export default function Home() {
   // Dot-matrix name
   const name = "Karthik V T";
 
-  // Constant rotation for the Globe component
+  // Constant rotation for the Globe component (REMOVED: globeRotation)
+  // REMOVED: 
+  /*
   const globeRotation = {
     animate: {
       rotate: 360,
@@ -59,6 +61,7 @@ export default function Home() {
       ease: "linear",
     },
   };
+  */
 
   // Function for smooth scroll to "about"
   const scrollToAbout = () => {
@@ -93,11 +96,13 @@ export default function Home() {
         <div className="absolute inset-0 bg-gradient-to-b from-[#0a0a0a] via-[#0f0f0f] to-[#1a1a1a]"></div>
 
         {/* Parallax & Rotating Globe (Dynamically Loaded) */}
-        <motion.div style={{ y: backgroundY }} className="absolute inset-0 z-[1]">
+        {/* REMOVED GLOBE COMPONENT */}
+        {/* <motion.div style={{ y: backgroundY }} className="absolute inset-0 z-[1]">
             <motion.div variants={globeRotation} animate="animate" style={{ position: 'absolute', inset: 0 }}>
                 <Globe /> 
             </motion.div>
         </motion.div>
+        */}
         
         <motion.div style={{ y: backgroundY.get() * 0.75 }} className="absolute inset-0 z-[2]">
             <FloatingSpheres count={20} />
